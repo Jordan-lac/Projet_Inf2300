@@ -2,14 +2,17 @@ import pygame
 
 def intro_scene(screen, draw_text):
     narration = [
-        "Haïti... Pays de liberté, de douleur et d’espoir...",
-        "L'histoire est chargée de victoires... mais aussi de trahisons.",
-        "La politique ne regarde plus vers le peuple.",
-        "Les jeunes se sentent seuls, oubliés...",
-        "Mais toi... tu es différent(e).",
-        "Tu crois encore. Tu es la lumière dans l'obscurité.",
-        "Tu es DESTINE.",
-        "Ton voyage commence aujourd'hui... seul(e), mais avec un rêve."
+        "Ayiti... Peyi libète, doulè ak lespwa...",
+        "Istwa a chaje ak viktwa... men tou ak trayizon.",
+        "Politik la pa gade sou pèp la ankò.",
+        "Jèn yo santi yo poukont yo, bliye...",
+        "Men ou menm... ou diferan.",
+        "Ou toujou kwè.",
+        "Ou se limyè nan fènwa a.",
+        "Ou se DESTINE.",
+        "Vwayaj ou kòmanse jodi a... pou kont ou, men ak yon rèv.",
+        "Men gason an.",
+        "Men fi a."
     ]
     for line in narration:
         screen.fill((0, 0, 0))
