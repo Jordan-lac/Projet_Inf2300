@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 def intro_scene(screen, draw_text):
     narration = [
@@ -14,8 +15,27 @@ def intro_scene(screen, draw_text):
         "Men gason an.",
         "Men fi a."
     ]
-    for line in narration:
-        screen.fill((0, 0, 0))
-        draw_text(line, screen.get_height()//2)
+    SCREEN_WIDTH, SCREEN_HEIGHT = screen.get_size()
+    scene_images = [
+        pygame.image.load("assets/images/scene1.png").convert_alpha(),
+        pygame.image.load("assets/images/scene2.png").convert_alpha(),
+        pygame.image.load("assets/images/scene 3.jpeg").convert_alpha(),
+        pygame.image.load("assets/images/scene 4.jpeg").convert_alpha(),
+        pygame.image.load("assets/images/scene5.png").convert_alpha(),
+        pygame.image.load("assets/images/scene6.png").convert_alpha(),
+        pygame.image.load("assets/images/scene7.png").convert_alpha(),
+        pygame.image.load("assets/images/scene 8.jpeg").convert_alpha(),
+        pygame.image.load("assets/images/scene 9.jpeg").convert_alpha(),
+        pygame.image.load("assets/images/scene 10.jpeg").convert_alpha()
+    ]
+    scene_images = [pygame.transform.scale(img, (SCREEN_WIDTH, SCREEN_HEIGHT)) for img in scene_images]
+    font = pygame.font.SysFont(None, 28)
+    def draw_text_centered(surface, text, y):
+        text_surface = font.render(text, True, (255,255,255))
+        text_rect = text_surface.get_rect(center=(SCREEN_WIDTH // 2, y))
+        surface.blit(text_surface, text_rect)
+    for i, line in enumerate(narration):
+        screen.blit(scene_images[i % len(scene_images)], (0, 0))
+        draw_text_centered(screen, line, SCREEN_HEIGHT - 60)
         pygame.display.flip()
         pygame.time.wait(3000)
