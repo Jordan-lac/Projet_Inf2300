@@ -1,0 +1,67 @@
+# === ENVIRONNEMENT VIRTUEL ===
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+.venv.bak/
+pip-log.txt
+
+# === FICHIERS COMPILÉS PYTHON ===
+__pycache__/
+*.py[cod]
+*$py.class
+
+# === FICHIERS DE LOGS / DEBUG ===
+*.log
+*.pot
+*.mo
+
+# === BASE DE DONNÉES TEMPORAIRE OU DE DEV ===
+*.sqlite3
+*.db
+
+# === CONFIGURATION ÉDITEURS ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === SYSTÈME D'EXPLOITATION ===
+.DS_Store
+Thumbs.db
+
+# === BUILD/DISTRIBUTION ===
+build/
+dist/
+*.egg-info/
+.eggs/
+*.manifest
+*.spec
+
+# === TEST / COVERAGE ===
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+htmlcov/
+
+# === JEU : FICHIERS POTENTIELS À EXCLURE ===
+assets/temp/
+assets/cache/
+*.tmp
+*.bak
+*.old
+*.swp
+
+# === CONFIG & SECRETS ===
+.env
+*.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.crt
+
+# === DOCUMENTATION GÉNÉRÉE ===
+docs/_build/
