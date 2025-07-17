@@ -25,8 +25,9 @@ def intro_scene(screen, draw_text):
         pygame.image.load("assets/images/scene6.png").convert_alpha(),
         pygame.image.load("assets/images/scene7.png").convert_alpha(),
         pygame.image.load("assets/images/scene 8.jpeg").convert_alpha(),
-        pygame.image.load("assets/images/scene 9.jpeg").convert_alpha(),
-        pygame.image.load("assets/images/scene 10.jpeg").convert_alpha()
+        pygame.image.load("assets/images/scene 12.jpeg").convert_alpha(),
+        pygame.image.load("assets/images/scene 10.jpeg").convert_alpha(),
+        pygame.image.load("assets/images/scene 11.jpeg").convert_alpha()
     ]
     scene_images = [pygame.transform.scale(img, (SCREEN_WIDTH, SCREEN_HEIGHT)) for img in scene_images]
     font = pygame.font.SysFont(None, 28)

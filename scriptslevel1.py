@@ -5,6 +5,7 @@ def level1(screen, draw_text, selected):
     done = False
     choice_made = False
 
+
     while not done:
         screen.fill((0, 0, 0))
         draw_text("Niveau 1 - Quartier sale et abandonné", 50)
@@ -32,3 +33,4 @@ def level1(screen, draw_text, selected):
             pygame.display.flip()
             pygame.time.wait(5000)
             done = True
+
