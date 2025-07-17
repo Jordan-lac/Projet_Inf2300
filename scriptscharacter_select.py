@@ -2,10 +2,14 @@ import pygame
 import sys
 
 def character_select(screen, draw_text):
+    bg_path = "assets/images/background.jpeg"
+    background = pygame.image.load(bg_path).convert()
+    background = pygame.transform.scale(background, screen.get_size())
     selecting = True
     selected = None
+
     while selecting:
-        screen.fill((0, 0, 0))
+        screen.blit(background, (0, 0))
         draw_text("Choisissez votre personnage :", 100)
         draw_text("1. Garçon", 200)
         draw_text("2. Fille", 250)
