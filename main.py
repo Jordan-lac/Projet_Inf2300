@@ -9,6 +9,17 @@ pygame.init()
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("DESTINE - Se Bati yon Nasyon")
+
+
+# === Mettre la fenêtre au premier plan sous Windows ===
+try:
+    import ctypes
+    hwnd = pygame.display.get_wm_info()['window']
+    ctypes.windll.user32.SetForegroundWindow(hwnd)
+except Exception as e:
+    print("Impossible de mettre la fenêtre au premier plan :", e)
+
+
 font = pygame.font.SysFont("arial", 24)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
