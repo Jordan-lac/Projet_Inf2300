@@ -84,6 +84,9 @@ def main():
     selected = character_select(screen, draw_text)
     show_loading_bar_with_percentage(screen, duration=2)
     intro_scene(screen, draw_text)
+    ###############
+    show_loading_bar_with_percentage(screen, duration=2)
+    ###############
     level1(screen, draw_text, selected)
     pygame.quit()
 
