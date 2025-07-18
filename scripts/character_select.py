@@ -40,21 +40,32 @@ def intro_scene(screen, draw_text):
         pygame.display.flip()
         pygame.time.wait(3000)
 
-# Correction : background noir pour la sélection du personnage
-
 def character_select(screen, draw_text):
-    # Charger les images garçon/fille
-    
-    
-   
+    bg_path = "assets/images/select_bg.jpeg"
+    background = safe_load(bg_path, screen.get_size())
+
+    # Polices personnalisées
+    title_font = pygame.font.SysFont("arial", 48, bold=True)
+    option_font = pygame.font.SysFont("arial", 36)
 
     selecting = True
     selected = None
+
     while selecting:
-        screen.fill((0, 0, 0))  # Fond noir
-        draw_text("Choisissez votre personnage :", 100)
-        draw_text("1. Garçon", 200)
-        draw_text("2. Fille", 250)
+        screen.blit(background, (0, 0))  # Afficher l’image de fond
+
+        # 🎨 Titre en violet foncé
+        title_text = title_font.render("Choisissez votre personnage :", True, (0, 0, 0))
+        screen.blit(title_text, (screen.get_width()//2 - title_text.get_width()//2, 80))
+
+        #  Garçon en bleu ciel
+        garcon_text = option_font.render("1.  Garçon", True, (0, 191, 255))
+        screen.blit(garcon_text, (screen.get_width()//2 - garcon_text.get_width()//2, 160))
+
+        #  Fille en rose clair
+        fille_text = option_font.render("2.  Fille", True, (255, 105, 180))
+        screen.blit(fille_text, (screen.get_width()//2 - fille_text.get_width()//2, 220))
+
         pygame.display.flip()
 
         for event in pygame.event.get():
@@ -68,4 +79,5 @@ def character_select(screen, draw_text):
                 elif event.key == pygame.K_2:
                     selected = "fille"
                     selecting = False
+
     return selected
