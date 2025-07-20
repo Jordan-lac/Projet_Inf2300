@@ -49,6 +49,7 @@ def create_quad(w=0.05, h=0.05):
 def main():
     pygame.init()
     pygame.font.init()
+    pygame.mixer.init()
     screen = pygame.display.set_mode((800, 600), DOUBLEBUF | OPENGL)
 
     shader = load_shader("shaders/bounce_vertex.glsl", "shaders/bounce_fragment.glsl")
@@ -61,6 +62,10 @@ def main():
     vertices = create_quad()
     VAO = glGenVertexArrays(1)
     VBO = glGenBuffers(1)
+
+    pygame.mixer.music.load("assets/musique_1.mp3")
+    pygame.mixer.music.set_volume(0.7) 
+    pygame.mixer.music.play(-1)
 
     glBindVertexArray(VAO)
     glBindBuffer(GL_ARRAY_BUFFER, VBO)
