@@ -1,5 +1,17 @@
 import pygame
 import os
+import re
+
+def contient_mot_negatif_sans_negation(texte, mots_cles_negatifs):
+    """
+    Vérifie si un mot négatif est présent sans négation (ex: pas nuisible → OK ; nuisible seul → Game Over).
+    """
+    for mot in mots_cles_negatifs:
+        pattern_negation = r"(pas\s+|n['e]{0,2}s[t]{0,1}\s+pas\s+)" + mot
+        if re.search(r"\b" + mot + r"\b", texte):
+            if not re.search(pattern_negation, texte):
+                return True
+    return False
 
 def level2(screen, draw_text, selected):
     clock = pygame.time.Clock()
@@ -19,19 +31,23 @@ def level2(screen, draw_text, selected):
     font = pygame.font.SysFont(None, 32)
     input_active = True
     feedback = ""
-    niveau_suivant = False  # flag pour déclencher le passage au niveau 3
+    niveau_suivant = False
 
     # Mots-clés
-    mots_cles_positifs = ["nature", "environnement", "arbres", "eau", "pollution", "protéger", "sauvons", "planète",
-                          "écologie", "biodiversité", "protection", "sauver", "respecter", "préserver", "aider",
-                          "soutenir", "agir", "responsabilité", "engagement", "sensibiliser", "éducation", "conscience",
-                          "respect", "écosystème", "vivre", "harmonie", "équilibre", "avenir", "générations futures",
-                          "sustainable", "durable", "bon"]
-    mots_cles_negatifs = ["haine", "guerre", "idiot", "violence", "sale", "tuer", "brûler", "rien", "polluer",
-                          "détruire", "abattre", "ignorer", "mépriser", "polluant", "toxique", "danger", "menace",
-                          "crise", "désastre", "catastrophe", "destruction", "perte", "sacrifier","vide", "inutile",
-                          "mauvais", "échec", "triste", "déception", "perdre", "abandonner", "laisser tomber",
-                          "désespérer", "désespoir", "pessimisme", "négation", "indifférence", "ignorance", "haineux", "nuisible"]
+    mots_cles_positifs = [
+        "nature", "environnement", "arbres", "eau", "pollution", "protéger", "sauvons", "planète",
+        "écologie", "biodiversité", "protection", "sauver", "respecter", "préserver", "aider",
+        "soutenir", "agir", "responsabilité", "engagement", "sensibiliser", "éducation", "conscience",
+        "respect", "écosystème", "vivre", "harmonie", "équilibre", "avenir", "générations futures",
+        "sustainable", "durable", "bon"
+    ]
+    mots_cles_negatifs = [
+        "haine", "guerre", "idiot", "violence", "sale", "tuer", "brûler", "rien", "polluer",
+        "détruire", "abattre", "ignorer", "mépriser", "polluant", "toxique", "danger", "menace",
+        "crise", "désastre", "catastrophe", "destruction", "perte", "sacrifier", "vide", "inutile",
+        "mauvais", "échec", "triste", "déception", "perdre", "abandonner", "laisser tomber",
+        "désespérer", "désespoir", "pessimisme", "négation", "indifférence", "ignorance", "haineux", "nuisible","mauvaise"
+    ]
 
     while running:
         for event in pygame.event.get():
@@ -42,13 +58,13 @@ def level2(screen, draw_text, selected):
                 if event.key == pygame.K_RETURN:
                     texte_min = user_text.lower()
 
-                    if any(mot in texte_min for mot in mots_cles_negatifs):
+                    if contient_mot_negatif_sans_negation(texte_min, mots_cles_negatifs):
                         feedback = "Discours inacceptable. Game Over."
                         input_active = False
                     elif any(mot in texte_min for mot in mots_cles_positifs):
                         feedback = "Tu es un protecteur de l'environnement."
                         input_active = False
-                        niveau_suivant = True  # activer le passage au niveau suivant
+                        niveau_suivant = True
                         feedback_start_time = pygame.time.get_ticks()
                     else:
                         feedback = "Discours hors sujet. Game Over."
@@ -80,8 +96,8 @@ def level2(screen, draw_text, selected):
         pygame.display.flip()
         clock.tick(60)
 
-        # Si le feedback positif a été donné, attendre un délai avant de passer
+        # Passage automatique après succès
         if niveau_suivant:
             now = pygame.time.get_ticks()
-            if now - feedback_start_time > 2000:  # attendre 2 secondes
+            if now - feedback_start_time > 2000:
                 return "success"
