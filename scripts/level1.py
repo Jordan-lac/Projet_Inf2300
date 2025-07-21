@@ -11,6 +11,11 @@ def safe_load(path, size):
         return pygame.Surface(size)  # Surface vide
 
 def level1(screen, draw_text, selected):
+    pygame.mixer.init()
+    pygame.mixer.music.load("assets/musiques/Musique_3.mp3")
+    pygame.mixer.music.play(-1)  # -1 veut dire boucle infinie
+    pygame.mixer.music.set_volume(0.2)  # (facultatif) règle le volume
+    
     bg_path = "assets/images/select.jpeg"
     background = safe_load(bg_path, screen.get_size())
     done = False

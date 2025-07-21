@@ -131,6 +131,7 @@ def show_loading_bar_with_percentage(screen, duration=2):
         clock.tick(60)
 
 def main():
+
     show_loading_circle(screen, duration=2)
     selected = character_select(screen, draw_text)
     # show_loading_bar_with_percentage(screen, duration=2)
