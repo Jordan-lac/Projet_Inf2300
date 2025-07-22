@@ -4,7 +4,7 @@ from scripts.character_select import character_select
 from scripts.intro_scene import intro_scene
 from scripts.level1 import level1
 from scripts.level2 import level2
-from scripts.level3 import level3  # Tu dois créer ce fichier level3.py
+from scripts.level3 import level3  
 
 
 # Initialisation
@@ -93,7 +93,7 @@ def show_loading_bar_with_percentage(screen, duration=2):
     while True:
         # Temps écoulé depuis le début de l'animation en secondes
         elapsed = (pygame.time.get_ticks() - start_time) / 1000.0
-        # Pourcentage de progression (limité à 1, soit 100%)
+        # Pourcentage de progression (limité à 1, soit 1000
         percent = min(1, elapsed / duration)
         
         # Gestion des événements
@@ -131,6 +131,13 @@ def show_loading_bar_with_percentage(screen, duration=2):
         clock.tick(60)
 
 def main():
+    pygame.mixer.init()
+# Charger deux fichiers audio
+    musique1 = pygame.mixer.Sound("assets/musiques/Musique_3.mp3")
+    channel1 = pygame.mixer.Channel(0)
+    channel1.play(musique1)
+    #pygame.mixer.music.play(-1)  # -1 veut dire boucle infinie
+    channel1.set_volume(0.2)
 
     show_loading_circle(screen, duration=2)
     selected = character_select(screen, draw_text)

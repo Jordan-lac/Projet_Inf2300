@@ -2,6 +2,12 @@ import pygame
 import sys
 
 def intro_scene(screen, draw_text):
+    pygame.mixer.init()
+    musique2 = pygame.mixer.Sound("assets/musiques/Voice_off.mp3")
+    channel2 = pygame.mixer.Channel(1)
+    channel2.play(musique2)
+    channel2.set_volume(0.6)
+
     narration = [
         "Ayiti... Peyi libète, doulè ak lespwa...",
         "Istwa a chaje ak viktwa... men tou ak trayizon.",
