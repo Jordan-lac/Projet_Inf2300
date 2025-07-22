@@ -59,8 +59,8 @@ def main():
     VAO = glGenVertexArrays(1)
     VBO = glGenBuffers(1)
 
-    pygame.mixer.music.load("assets/musique_1.mp3")
-    pygame.mixer.music.set_volume(0.7)  
+    pygame.mixer.music.load("assets/musique_3.mp3")
+    pygame.mixer.music.set_volume(0.4)  
     pygame.mixer.music.play(-1)
     
     glBindVertexArray(VAO)

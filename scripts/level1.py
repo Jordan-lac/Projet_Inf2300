@@ -11,7 +11,6 @@ def safe_load(path, size):
         return pygame.Surface(size)  # Surface vide
 
 def level1(screen, draw_text, selected):
-    # Chargement des images de fond
     bg_path = "assets/images/select.jpeg"
     success_path = "assets/images/success_bg.jpeg"
     failure_path = "assets/images/failure_bg.jpeg"
