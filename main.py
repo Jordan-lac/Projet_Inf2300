@@ -5,7 +5,7 @@ from scripts.intro_scene import intro_scene
 from scripts.level1 import level1
 from scripts.level2 import level2
 from scripts.level3 import level3  # Tu dois créer ce fichier level3.py
-from scripts.level4 import level4  # Tu dois créer ce fichier level4.py
+
 
 # Initialisation
 pygame.init()
@@ -80,6 +80,7 @@ def show_loading_bar_with_percentage(screen, duration=2):
 
     while True:
         elapsed = (pygame.time.get_ticks() - start_time) / 1000.0
+        # Pourcentage de progression (limité à 1, soit 100%)
         percent = min(1, elapsed / duration)
 
         for event in pygame.event.get():
@@ -103,6 +104,7 @@ def show_loading_bar_with_percentage(screen, duration=2):
         clock.tick(60)
 
 def main():
+
     show_loading_circle(screen, duration=2)
     selected = character_select(screen, draw_text)
     intro_scene(screen, draw_text)
